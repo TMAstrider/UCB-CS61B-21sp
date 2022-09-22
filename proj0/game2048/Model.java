@@ -114,6 +114,7 @@ public class Model extends Observable {
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
 
+
         checkGameOver();
         if (changed) {
             setChanged();
@@ -171,6 +172,27 @@ public class Model extends Observable {
     }
 
     /**
+     * returns true if it is a boundary tile
+     */
+    public static boolean is_boundary(int col, int row, Board b) {
+        if (col == 0 || col ==b.size() - 1) {
+            return true;
+        } else if (row == 0 || row == b.size() - 1) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Returns true if there are adjacent identical tile(s)
+     */
+    public static boolean is_adjacent(int col, int row, Board b) {
+        if (is_boundary(col, row, b)) {
+            return true;
+        }
+        return true;
+    }
+    /**
      * Returns true if there are any valid moves on the board.
      * There are two ways that there can be valid moves:
      * 1. There is at least one empty space on the board.
@@ -178,17 +200,42 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        boolean flag = false;
         if (emptySpaceExists(b)) {
             return true;
-        } else {
+        }
+        else if(maxTileExists(b)){
+            return true;
+        }else {
             for (int col = 0; col < b.size(); col += 1) {
                 for (int row = 0; row < b.size(); row += 1) {
-                    continue;
+                    if (col -1 >= 0) {
+                        if (b.tile(col, row).value() == b.tile(col - 1, row).value()) {
+                            flag = true;
+                        }
+                    }
+                    if (row - 1 >= 0) {
+                        if (b.tile(col, row).value() == b.tile(col, row - 1).value()) {
+                            flag = true;
+                        }
+                    }
+                    if (col + 1 < b.size()) {
+                        if (b.tile(col, row).value() == b.tile(col + 1, row).value()) {
+                            flag = true;
+                        }
+                    }
+                    if (row + 1 < b.size()) {
+                        if (b.tile(col, row).value() == b.tile(col, row + 1).value()) {
+                            flag = true;
+                        }
+                    }
                 }
             }
         }
-        return false;
+        return flag;
     }
+
+
 
     @Override
      /** Returns the model as a string, used for debugging. */
