@@ -113,17 +113,45 @@ public class Model extends Observable {
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
+        board.setViewingPerspective(side);
         for (int col = 0; col < board.size(); col +=1) {
-            for (int row = 0; row < board.size(); row +=1) {
+            for (int row = board.size() - 1; row >= 0; row -=1) {
                 Tile t = board.tile(col, row);
-                if (board.tile(col, row) != null) {
-                    board.move(col, 3, t);
-                    changed = true;
-                    score += 7;
+                if (t != null) {
+                    for (int r2 = row - 1; r2 >=0; r2 -= 1) {
+                        Tile t_below = board.tile(col, r2);
+                        if (t_below != null) {
+                            if (t.value() == t_below.value()) {
+                                board.move(col, row, t_below);
+                                score += 2 * t.value();
+                                changed = true;
+                                break;
+                            } else {
+                                break;
+                            }
+
+                        }
+                    }
                 }
             }
         }
+        for (int col = 0; col < board.size(); col +=1) {
+            for (int row = board.size() - 1; row >= 0; row -=1) {
+                Tile t = board.tile(col, row);
+                if (t == null) {
+                    for (int r3 = row -1; r3 >= 0; r3 -= 1) {
+                        Tile t2_below = board.tile(col, r3);
+                        if (t2_below != null) {
+                            board.move(col, row, t2_below);
+                            row = r3;
+                            changed = true;
 
+                        }
+                    }
+                }
+            }
+        }
+        board.setViewingPerspective(Side.NORTH);
         checkGameOver();
         if (changed) {
             setChanged();
