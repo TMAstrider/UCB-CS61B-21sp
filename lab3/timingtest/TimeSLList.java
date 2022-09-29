@@ -23,7 +23,7 @@ public class TimeSLList {
 
     public static void timeGetLast() {
         // TODO: YOUR CODE HERE
-        AList<Integer> Ns = new AList<>();
+        AList<Integer> N = new AList<>();
         AList<Double> times = new AList<>();
         AList<Integer> opCounts = new AList<>();
         int aSimpleSymbol = 1;
@@ -45,10 +45,10 @@ public class TimeSLList {
             }
 //            double timeInSeconds = sw.elapsedTime();
             times.addLast(sw.elapsedTime());
-            Ns.addLast(cnt);
+            N.addLast(cnt);
             opCounts.addLast(aSymbolTimes);
 
-            printTimingTable(Ns, times, opCounts);
+            printTimingTable(N, times, opCounts);
         }
     }
 
