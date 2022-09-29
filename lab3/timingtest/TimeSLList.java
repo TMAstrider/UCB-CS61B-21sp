@@ -31,12 +31,17 @@ public class TimeSLList {
         int addedNumber = 1;
         int aSymbolTimes = 10000;
         SLList<Integer> simpleTest = new SLList<>();
-        for (int i = 0; i < 10; ++i) {
-            Stopwatch sw = new Stopwatch();
+        for (int i = 0; i < 8; ++i) {
+
             int cnt = (aSimpleSymbol << i) * base;
 //            int fib41 = fib(41);
             for (int j = 0; j < aSymbolTimes; ++j) {
                 simpleTest.addLast(addedNumber);
+            }
+
+            Stopwatch sw = new Stopwatch();
+            for (int j = 0; j < aSymbolTimes; ++j) {
+                simpleTest.getLast();
             }
 //            double timeInSeconds = sw.elapsedTime();
             times.addLast(sw.elapsedTime());

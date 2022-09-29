@@ -33,12 +33,17 @@ public class TimeAList {
         int base = 1000;
         int addedNumber = 1;
         AList<Integer> simpleTest = new AList<>();
-        for (int i = 1; i < 15; i += 1) {
-            Stopwatch sw = new Stopwatch();
+        for (int i = 1; i < 8; i += 1) {
+//            Stopwatch sw = new Stopwatch();
             int cnt = (aSimpleSymbol << i) * base;
 //            int fib41 = fib(41);
             for (int j = 0; j < cnt; ++j) {
                 simpleTest.addLast(addedNumber);
+            }
+
+            Stopwatch sw = new Stopwatch();
+            for (int j = 0; j < cnt; ++j) {
+                simpleTest.getLast();
             }
 //            double timeInSeconds = sw.elapsedTime();
             times.addLast(sw.elapsedTime());
