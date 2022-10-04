@@ -4,11 +4,11 @@ import java.util.Iterator;
 /**
  * @TMAstrider <T_T>
  */
-public class LinkedListDeque<T> implements Deque<T>, Iterable<T>{
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private class StuffNode {
-        public T item;
-        public StuffNode prev;
-        public StuffNode next;
+        private T item;
+        private StuffNode prev;
+        private StuffNode next;
         StuffNode(T x) {
             item = x;
             prev = next = null;
@@ -93,7 +93,9 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T>{
     }
 
     /**
-     * Prints the items in the deque from first to last, separated by a space. Once all the items have been printed, print out a new line.
+     * Prints the items in the deque from first to last,
+     * separated by a space. Once all the items have been printed,
+     * print out a new line.
      */
     @Override
     public void printDeque() {
@@ -203,13 +205,13 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T>{
         if (o == this) {
             return true;
         }
-        if ( o instanceof Deque) {
+        if (o instanceof Deque) {
             Deque<T> pussy = (Deque<T>) o;
             if (pussy.size() != this.size()) {
                 return false;
             }
             for (int i = 0; i < this.size(); i++) {
-                if(this.get(i) != pussy.get(i)) {
+                if (this.get(i) != pussy.get(i)) {
                     return false;
                 }
             }

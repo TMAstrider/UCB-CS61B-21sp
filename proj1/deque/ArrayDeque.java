@@ -31,7 +31,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
      */
     private void resize(int resizeFactor) {
         int brandNewSize;
-        if(resizeFactor == 1) {
+        if (resizeFactor == 1) {
             brandNewSize = items.length * 2;
         } else {
             brandNewSize = items.length / 2;
@@ -52,7 +52,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
      * I call it Clockwise Tracking
      */
     private int getNextFirstCW(int curPos) {
-        return (curPos -1 + items.length) % items.length;
+        return (curPos - 1 + items.length) % items.length;
     }
 
     /**
@@ -134,7 +134,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
      */
     @Override
     public T removeFirst() {
-        if(size == 0) {
+        if (size == 0) {
             return null;
         }
         T getItem = items[getNextFirstCCW(nextFirst)];
@@ -203,13 +203,13 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (o == this) {
             return true;
         }
-        if ( o instanceof Deque) {
-            Deque<T> pussy= (Deque<T>) o;
+        if (o instanceof Deque) {
+            Deque<T> pussy = (Deque<T>) o;
             if (pussy.size() != this.size()) {
                 return false;
             }
             for (int i = 0; i < this.size(); i++) {
-                if(this.get(i) != pussy.get(i)) {
+                if (this.get(i) != pussy.get(i)) {
                     return false;
                 }
             }
