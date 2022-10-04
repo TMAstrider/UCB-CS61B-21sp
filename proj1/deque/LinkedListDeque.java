@@ -1,9 +1,10 @@
 package deque;
+import java.util.Iterator;
 
 /**
  * @TMAstrider <T_T>
  */
-public class LinkedListDeque<T> implements Deque<T> {
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T>{
     private class StuffNode {
         public T item;
         public StuffNode prev;
@@ -174,4 +175,47 @@ public class LinkedListDeque<T> implements Deque<T> {
         return getRecursiveHelper(sentinel.next, index);
 
     }
+
+    public Iterator<T> iterator() {
+        return new LLIterator();
+    }
+
+    private class LLIterator implements Iterator<T> {
+        private int curIPos = 0;
+
+        @Override
+        public boolean hasNext() {
+            return curIPos < size();
+        }
+
+        @Override
+        public T next() {
+            T ans = get(curIPos);
+            curIPos++;
+            return ans;
+        }
+    }
+
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (o == this) {
+            return true;
+        }
+        if ( o instanceof Deque) {
+            Deque<T> pussy= (Deque<T>) o;
+            if (pussy.size() != this.size()) {
+                return false;
+            }
+            for (int i = 0; i < this.size(); i++) {
+                if(this.get(i) != pussy.get(i)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
 }
