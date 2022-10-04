@@ -35,7 +35,7 @@ public class TimeSLList {
 
             int cnt = (aSimpleSymbol << i) * base;
 //            int fib41 = fib(41);
-            for (int j = 0; j < aSymbolTimes; ++j) {
+            for (int j = 0; j < cnt; ++j) {
                 simpleTest.addLast(addedNumber);
             }
 
