@@ -4,14 +4,14 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 public class MaxArrayDeque<T> extends ArrayDeque implements Iterable{
-    Comparator<T> MaxArrayComparator;
+    Comparator<T> maxComparator;
 
     public MaxArrayDeque(Comparator<T> c) {
-        MaxArrayComparator = c;
+        maxComparator = c;
     }
 
     public T max() {
-        return max(MaxArrayComparator);
+        return max(maxComparator);
     }
 
     public T max(Comparator<T> c) {
@@ -19,10 +19,10 @@ public class MaxArrayDeque<T> extends ArrayDeque implements Iterable{
             return null;
         }
         T maxItem = (T) this.get(0);
-
-        while (iterator().hasNext()) {
+        Iterator<T> hey = iterator();
+        while (hey.hasNext()) {
             int i = 0;
-            T temp = iterator().next();
+            T temp = hey.next();
             if (c.compare(maxItem, temp) < 0) {
                 maxItem = temp;
             }
