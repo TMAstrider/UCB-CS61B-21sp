@@ -14,8 +14,8 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             prev = next = null;
         }
     }
-    public StuffNode sentinel;
-    public int size;
+    private StuffNode sentinel;
+    private int size;
 
     public  LinkedListDeque() {
         sentinel = new StuffNode(null);
@@ -27,18 +27,18 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     /**
      * sorts out the relation for the first element
      */
-    private void helperAddFirst(T x, StuffNode sentinel, int size) {
+    private void helperAddFirst(T x) {
         StuffNode nodeSwap = new StuffNode(x);
         if (size == 0) {
-            sentinel.prev = nodeSwap;
-            nodeSwap.prev = sentinel;
-            nodeSwap.next = sentinel;
+            this.sentinel.prev = nodeSwap;
+            nodeSwap.prev = this.sentinel;
+            nodeSwap.next = this.sentinel;
         } else {
-            nodeSwap.prev = sentinel;
-            nodeSwap.next = sentinel.next;
-            sentinel.next.prev = nodeSwap;
+            nodeSwap.prev = this.sentinel;
+            nodeSwap.next = this.sentinel.next;
+            this.sentinel.next.prev = nodeSwap;
         }
-        sentinel.next = nodeSwap;
+        this.sentinel.next = nodeSwap;
     }
 
     /**
@@ -46,7 +46,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
      */
     @Override
     public void addFirst(T x) {
-        helperAddFirst(x, sentinel, size);
+        helperAddFirst(x);
         size += 1;
     }
 //    public StuffNode getFirst() {
@@ -56,7 +56,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     /**
      * sorts out the relation for the last element
      */
-    private void addLastHelper(T x, StuffNode sentinel, int size) {
+    private void addLastHelper(T x) {
         StuffNode nodeSwap = new StuffNode(x);
         if (size == 0) {
             nodeSwap.prev = sentinel;
@@ -75,7 +75,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
      */
     @Override
     public void addLast(T x) {
-        addLastHelper(x, sentinel, size);
+        addLastHelper(x);
         size += 1;
     }
     /**
@@ -206,7 +206,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
                 return false;
             }
             for (int i = 0; i < this.size(); i++) {
-                if (this.get(i) != pussy.get(i)) {
+                if (!this.get(i).equals(pussy.get(i))) {
                     return false;
                 }
             }

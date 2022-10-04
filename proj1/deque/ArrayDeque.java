@@ -206,7 +206,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
                 return false;
             }
             for (int i = 0; i < this.size(); i++) {
-                if (this.get(i) != pussy.get(i)) {
+                if (!this.get(i).equals(pussy.get(i))) {
                     return false;
                 }
             }
