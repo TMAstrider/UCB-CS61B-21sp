@@ -33,6 +33,10 @@ public class LauncherArrayDeque {
         launcher.removeFirst();
         launcher.removeFirst();
         launcher.printDeque();
-
+        System.out.println(launcher.isEmpty());
+        launcher.removeFirst();
+        launcher.removeFirst();
+        launcher.printDeque();
+        System.out.println(launcher.isEmpty());
     }
 }
