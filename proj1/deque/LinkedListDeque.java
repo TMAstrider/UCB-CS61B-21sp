@@ -14,8 +14,8 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             prev = next = null;
         }
     }
-    private StuffNode sentinel;
-    private int size;
+    public StuffNode sentinel;
+    public int size;
 
     public  LinkedListDeque() {
         sentinel = new StuffNode(null);
@@ -23,9 +23,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         sentinel.next = sentinel.prev = sentinel;
     }
 
-    public LinkedListDeque(T x) {
 
-    }
     /**
      * sorts out the relation for the first element
      */
@@ -51,9 +49,9 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         helperAddFirst(x, sentinel, size);
         size += 1;
     }
-    public StuffNode getFirst() {
-        return sentinel.next;
-    }
+//    public StuffNode getFirst() {
+//        return sentinel.next;
+//    }
 
     /**
      * sorts out the relation for the last element
@@ -201,9 +199,6 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     public boolean equals(Object o) {
         if (o == null) {
             return false;
-        }
-        if (o == this) {
-            return true;
         }
         if (o instanceof Deque) {
             Deque<T> pussy = (Deque<T>) o;
