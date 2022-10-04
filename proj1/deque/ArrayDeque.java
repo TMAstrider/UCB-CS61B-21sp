@@ -200,9 +200,6 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (o == null) {
             return false;
         }
-        if (o == this) {
-            return true;
-        }
         if (o instanceof Deque) {
             Deque<T> pussy = (Deque<T>) o;
             if (pussy.size() != this.size()) {
