@@ -9,7 +9,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private int nextFirst;
     private int nextLast;
     private  double retentionRate = 0.25;
-    public boolean isFull() {
+    private boolean isFull() {
         if (size == items.length) {
             return true;
         }
@@ -31,7 +31,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
      */
     private void resize(int resizeFactor) {
         int brandNewSize;
-        if (resizeFactor == 1) {
+        if(resizeFactor == 1) {
             brandNewSize = items.length * 2;
         } else {
             brandNewSize = items.length / 2;

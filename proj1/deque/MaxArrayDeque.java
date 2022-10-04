@@ -3,7 +3,7 @@ package deque;
 import java.util.Comparator;
 import java.util.Iterator;
 
-public class MaxArrayDeque<T> extends ArrayDeque implements Iterable{
+public class MaxArrayDeque<T> extends ArrayDeque{
     Comparator<T> maxComparator;
 
     public MaxArrayDeque(Comparator<T> c) {
@@ -32,26 +32,26 @@ public class MaxArrayDeque<T> extends ArrayDeque implements Iterable{
 
 
 
-    public Iterator<T> iterator() {
-        return new ArrayIterator();
-    }
-
-    private class ArrayIterator implements Iterator<T> {
-        int curPos;
-
-        ArrayIterator() {
-            curPos = 0;
-        }
-        @Override
-        public T next() {
-            T returnItem = (T) get(curPos);
-            curPos++;
-            return returnItem;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return curPos < size();
-        }
-    }
+//    public Iterator<T> iterator() {
+//        return new ArrayIterator();
+//    }
+//
+//    private class ArrayIterator implements Iterator<T> {
+//        int curPos;
+//
+//        ArrayIterator() {
+//            curPos = 0;
+//        }
+//        @Override
+//        public T next() {
+//            T returnItem = (T) get(curPos);
+//            curPos++;
+//            return returnItem;
+//        }
+//
+//        @Override
+//        public boolean hasNext() {
+//            return curPos < size();
+//        }
+//    }
 }
