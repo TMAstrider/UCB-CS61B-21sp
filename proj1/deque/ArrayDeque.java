@@ -135,6 +135,9 @@ public class ArrayDeque<T> {
      * If no such item exists, returns null.
      */
     public T removeFirst() {
+        if(size == 0) {
+            return null;
+        }
         T getItem = items[getNextFirstCCW(nextFirst)];
         items[getNextFirstCCW(nextFirst)] = null;
         nextFirst = getNextFirstCCW(nextFirst);
@@ -151,6 +154,9 @@ public class ArrayDeque<T> {
      * If no such item exists, returns null.
      */
     public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
         T getItem = items[getNextLastCCW(nextLast)];
         items[getNextLastCCW(nextLast)] = null;
         nextLast = getNextLastCCW(nextLast);
