@@ -1,25 +1,23 @@
 # Gitlet Design Document
 
-**Name**:
+**Name**: TMAstrider
 
 ## Classes and Data Structures
 
-### Class 1
+### Commit
 
-#### Fields
+#### Instances Variables
+* message - contains the message of a commit
+* timestamp - the time at which the commit was created
+* parent - the parent commit of the commit object
 
-1. Field 1
-2. Field 2
+### Repository
 
-
-### Class 2
-
-#### Fields
-
-1. Field 1
-2. Field 2
-
-
+#### Instances Variables
+* CWD - current working directory
+* GITLET_DIR - gitlet directory
+* defaultBranch - default branch "master"
+* 
 ## Algorithms
 
 ## Persistence
