@@ -26,8 +26,16 @@ public class Main {
             case "add":
                 // TODO: handle the `add [filename]` command
                 Repository.dirCheck();
+                Repository.validateNumArgs("add", args, 2);
+                Repository.add(args[1]);
                 break;
             // TODO: FILL THE REST IN
+            case "commit":
+                // TODO: handle the `add [filename]` command
+                Repository.dirCheck();
+                Repository.validateNumArgs("commit", args, 2);
+                Repository.commit(args[1]);
+                break;
             default:
                 MyUtils.exit("No command with that name exists.");
         }
