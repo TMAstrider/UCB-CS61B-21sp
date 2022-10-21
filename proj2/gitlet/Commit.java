@@ -78,6 +78,10 @@ public class Commit implements Serializable {
         return dateFormat.format(referredTimestamp);
     }
 
+    public String getStrTimestamp() {
+        return strTimestamp;
+    }
+
     public String generateId(){
         return Utils.sha1(message.toString(), timestamp.toString(), getParent());
     }
@@ -86,7 +90,7 @@ public class Commit implements Serializable {
         String dirName = id.substring(0, 2);
         String fileName = id .substring(2, 40);
 
-        return Utils.join(Repository.OBJECTS, dirName, fileName);
+        return Utils.join(Repository.COMMIT, id);
     }
 
     public String getParent() {
@@ -110,9 +114,17 @@ public class Commit implements Serializable {
     }
 
     public void addStagedFile(StagingArea stage) {
-        Map<String, String> addedStageMap = stage.getAddedStageMap();
+        Map<String, String> addedStageMap = stage.getStageMap();
         for(Map.Entry<String, String> entry : addedStageMap.entrySet()) {
             filePathId.put(entry.getKey(), entry.getValue());
+        }
+    }
+
+
+    public void rmStagedFile(StagingArea stage) {
+        Map<String, String> rmStageMap = stage.getStageMap();
+        for(Map.Entry<String,String> entry : rmStageMap.entrySet()) {
+            filePathId.remove(entry.getKey(),entry.getValue());
         }
     }
 
@@ -121,6 +133,8 @@ public class Commit implements Serializable {
             filePathId.put(entry.getKey(), entry.getValue());
         }
     }
+
+
 
 
 

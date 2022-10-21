@@ -11,8 +11,8 @@ public class Blob implements Serializable {
     private File savedFileName;
     private byte[] bytes ;
 
-    public Blob(File argfile) {
-        this.fileName = argfile;
+    public Blob(File argFile) {
+        this.fileName = argFile;
         filePathName = this.fileName.getPath();
         bytes = readContents(this.fileName);
         id = generateId();
@@ -22,9 +22,12 @@ public class Blob implements Serializable {
     public byte[] readContents(File file) {
         return Utils.readContents(file);
     }
+
+
     public String generateId() {
         return Utils.sha1(bytes, filePathName);
     }
+
 
     public String getBlobId() {
         return id;
@@ -44,7 +47,7 @@ public class Blob implements Serializable {
         String dirName = id.substring(0, 2);
         String fileName = id .substring(2, 40);
 
-        return Utils.join(Repository.OBJECTS, dirName, fileName);
+        return Utils.join(Repository.BLOB, id);
     }
 
 
