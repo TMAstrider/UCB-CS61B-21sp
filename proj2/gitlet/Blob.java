@@ -23,6 +23,9 @@ public class Blob implements Serializable {
         return Utils.readContents(file);
     }
 
+    public byte[] getBytes() {
+        return bytes;
+    }
 
     public String generateId() {
         return Utils.sha1(bytes, filePathName);

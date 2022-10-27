@@ -1,0 +1,113 @@
+test01-init:
+OK
+test02-basic-checkout:
+OK
+test03-basic-log:
+OK
+test04-prev-checkout:
+OK
+test11-basic-status:
+OK
+test12-add-status:
+OK
+test13-remove-status:
+OK
+test14-add-remove-status:
+OK
+test15-remove-add-status:
+OK
+test16-empty-commit-err:
+OK
+test17-empty-commit-message-err:
+OK
+test18-nop-add:
+OK
+test19-add-missing-err:
+OK
+test20-status-after-commit:
+OK
+test21-nop-remove-err:
+OK
+test22-remove-deleted-file:
+OK
+test23-global-log:
+OK
+test24-global-log-prev:
+OK
+test25-successful-find:
+OK
+test26-successful-find-orphan:
+OK
+test27-unsuccessful-find-err:
+OK
+test28-checkout-detail:
+OK
+test29-bad-checkouts-err:
+OK
+
+
+
+test30-branches:
+ERROR (file f.txt present)
+
+test30-rm-branch:
+ERROR (incorrect output)
+
+
+
+test31-duplicate-branch-err:
+OK
+test31-rm-branch-err:
+OK
+
+test32-file-overwrite-err:
+OK
+
+
+
+test33-merge-no-conflicts:
+ERROR (incorrect output)
+
+test34-merge-conflicts:
+ERROR (incorrect output)
+
+test35-merge-rm-conflicts:
+ERROR (incorrect output)
+
+test36-merge-err:
+ERROR (incorrect output)
+
+test36-merge-parent2:
+ERROR (incorrect output)
+
+test37-reset1:
+ERROR (incorrect output)
+
+test38-bad-resets-err:
+ERROR (incorrect output)
+
+test39-short-uid:
+ERROR (incorrect output)
+
+test40-special-merge-cases:
+ERROR (incorrect output)
+
+
+
+test41-no-command-err:
+OK
+test42-other-err:
+OK
+
+
+
+test43-criss-cross-merge-b:
+ERROR (incorrect output)
+test43-criss-cross-merge:
+ERROR (incorrect output)
+test44-bai-merge:
+ERROR (incorrect output)
+
+
+
+Ran 42 tests. 28 passed.

@@ -1,11 +1,12 @@
 package gitlet;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 public class StagingArea implements Serializable {
-    private Map<String, String> tempTrackedFile = new HashMap<>();
+    private Map<String, String> tempTrackedFile;
 
     public StagingArea() {
         tempTrackedFile = new HashMap<>();
@@ -30,6 +31,9 @@ public class StagingArea implements Serializable {
     public Map<String, String> getStageMap() {
         return tempTrackedFile;
     }
+    public void rmFile(File rmFile) {
+        tempTrackedFile.remove(rmFile.getPath());
+    }
 
     public void clear() {
         tempTrackedFile.clear();
@@ -38,4 +42,14 @@ public class StagingArea implements Serializable {
     public boolean isExist(Blob stageBlob) {
         return tempTrackedFile.containsValue(stageBlob.getBlobId());
     }
+
+    public boolean isEmpty() {
+        return tempTrackedFile.isEmpty();
+    }
+
+    public boolean isExistFileName(File fileName) {
+        return tempTrackedFile.containsKey(fileName.getPath());
+    }
+
+
 }

@@ -41,6 +41,9 @@ public class Commit implements Serializable {
 
 //    private
     /* TODO: fill in the rest of this class. */
+    public Commit(String commitMessage) {
+
+    }
     public Commit(String commitMessage, List<String> parent) {
         this.message = commitMessage;
         this.parents = parent;
@@ -60,7 +63,7 @@ public class Commit implements Serializable {
     }
 
     public void save() {
-        if(!savedFileName.getParentFile().exists()) {
+        if (!savedFileName.getParentFile().exists()) {
             savedFileName.getParentFile().mkdir();
         }
         Utils.writeObject(savedFileName, this);
@@ -74,7 +77,7 @@ public class Commit implements Serializable {
     }
 
     public String getTimestamp(Date referredTimestamp) {
-        DateFormat dateFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
+        DateFormat dateFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z", Locale.US);
         return dateFormat.format(referredTimestamp);
     }
 
@@ -83,18 +86,15 @@ public class Commit implements Serializable {
     }
 
     public String generateId(){
-        return Utils.sha1(message.toString(), timestamp.toString(), getParent());
+        return Utils.sha1(message.toString(), timestamp.toString(), getParent().toString());
     }
 
     public File getFilePath(String id) {
-        String dirName = id.substring(0, 2);
-        String fileName = id .substring(2, 40);
-
         return Utils.join(Repository.COMMIT, id);
     }
 
-    public String getParent() {
-        return parents.size() == 0 ? "null" : parents.get(parents.size() - 1);
+    public List<String> getParent() {
+        return parents;
     }
 
     public List<String> getParentsList() {

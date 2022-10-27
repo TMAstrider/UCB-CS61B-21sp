@@ -3,10 +3,11 @@ package gitlet;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.Date;
-import java.util.Locale;
+
+
+import static gitlet.Utils.join;
 
 public class MyTest {
     public static final File CWD = new File(System.getProperty("user.dir"));
@@ -45,6 +46,18 @@ public class MyTest {
         System.out.println(a);
         boolean b = CWD.isDirectory();
         System.out.println(b);
+
+        File getFile = Repository.getFile("3");
+        System.out.println(getFile.getPath());
+        File blobFile = Repository.BLOB;
+        System.out.println(blobFile.getPath());
+        Commit currCommit = Repository.getCurrentCommit();
+        String getFileId = currCommit.getMap().get(getFile.getPath());
+        System.out.println(getFileId);
+
+        File restoredBlob = join(Repository.BLOB, getFileId);
+
+        System.out.println(restoredBlob.getPath());
     }
 
     public static String getTimestamp(Date referredTimestamp) {
