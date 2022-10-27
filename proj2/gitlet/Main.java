@@ -88,7 +88,7 @@ public class Main {
                 default -> MyUtils.exit("No command with that name exists.");
             }
         } catch (IOException exception) {
-            MyUtils.exit("Error!");
+            throw new RuntimeException("error");
         }
     }
 
