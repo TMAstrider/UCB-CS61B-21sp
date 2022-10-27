@@ -1,8 +1,4 @@
 package gitlet;
-
-// TODO: any imports you need here
-
-import javax.swing.plaf.synth.SynthTreeUI;
 import java.io.File;
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -10,20 +6,17 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /** Represents a gitlet commit object.
- *  TODO: It's a good idea to give a description here of what else this Class
  *  does at a high level.
  *
  *  @author TMAstrider
  */
 public class Commit implements Serializable {
     /**
-     * TODO: add instance variables here.
      *
      * List all instance variables of the Commit class here with a useful
      * comment above them describing what that variable represents and how that
      * variable is used. We've provided one example for `message`.
      */
-
     /** The message of this Commit. */
     private String message;
     private Date timestamp;
@@ -39,8 +32,6 @@ public class Commit implements Serializable {
     private Map<String, String> filePathId = new HashMap<>();
     private File savedFileName;
 
-//    private
-    /* TODO: fill in the rest of this class. */
     public Commit(String commitMessage) {
 
     }
@@ -85,12 +76,12 @@ public class Commit implements Serializable {
         return strTimestamp;
     }
 
-    public String generateId(){
+    public String generateId() {
         return Utils.sha1(message.toString(), timestamp.toString(), getParent().toString());
     }
 
-    public File getFilePath(String id) {
-        return Utils.join(Repository.COMMIT, id);
+    public File getFilePath(String fileId) {
+        return Utils.join(Repository.COMMIT, fileId);
     }
 
     public List<String> getParent() {
@@ -115,7 +106,7 @@ public class Commit implements Serializable {
 
     public void addStagedFile(StagingArea stage) {
         Map<String, String> addedStageMap = stage.getStageMap();
-        for(Map.Entry<String, String> entry : addedStageMap.entrySet()) {
+        for (Map.Entry<String, String> entry : addedStageMap.entrySet()) {
             filePathId.put(entry.getKey(), entry.getValue());
         }
     }
@@ -123,13 +114,13 @@ public class Commit implements Serializable {
 
     public void rmStagedFile(StagingArea stage) {
         Map<String, String> rmStageMap = stage.getStageMap();
-        for(Map.Entry<String,String> entry : rmStageMap.entrySet()) {
-            filePathId.remove(entry.getKey(),entry.getValue());
+        for (Map.Entry<String, String> entry : rmStageMap.entrySet()) {
+            filePathId.remove(entry.getKey(), entry.getValue());
         }
     }
 
     public void addPrevCommitMap(Map<String, String> prevCommitMap) {
-        for(Map.Entry<String, String> entry : prevCommitMap.entrySet()) {
+        for (Map.Entry<String, String> entry : prevCommitMap.entrySet()) {
             filePathId.put(entry.getKey(), entry.getValue());
         }
     }

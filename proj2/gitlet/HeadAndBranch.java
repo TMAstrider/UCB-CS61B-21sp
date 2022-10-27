@@ -13,7 +13,7 @@ public class HeadAndBranch {
 
         try {
             File branch = Utils.join(Repository.HEADS, branchName);
-            if(!branch.exists()) {
+            if (!branch.exists()) {
                 branch.createNewFile();
             }
             writeContents(branch, commitInfo.getId());
