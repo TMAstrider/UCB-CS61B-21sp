@@ -99,7 +99,7 @@ public class Repository {
             HeadAndBranch.saveHead();
             HeadAndBranch.saveBranchHead(defaultBranch);
         } catch (IOException exception) {
-            throw error("Internal error exists! ");
+            throw new IllegalArgumentException(exception.getMessage());
         }
         HeadAndBranch.saveCurrentBranch(defaultBranch);
     }
@@ -199,7 +199,7 @@ public class Repository {
             Commit currentCommit = getNewCommit(commitMessage);
             saveCommit(currentCommit);
         } catch (IOException exception) {
-            throw error("Error!");
+            throw new IllegalArgumentException(exception.getMessage());
         }
     }
 
@@ -231,7 +231,7 @@ public class Repository {
             rmArea.clear();
             rmArea.saveRmStage();
         } catch (IOException exception) {
-            throw error("Internal error exists! ");
+            throw new IllegalArgumentException(exception.getMessage());
         }
     }
 
@@ -732,8 +732,8 @@ public class Repository {
             if (!restoredFile.exists()) {
                 restoredFile.createNewFile();
             }
-        } catch (IOException e) {
-            throw error("Error!");
+        } catch (IOException exception) {
+            throw new IllegalArgumentException(exception.getMessage());
         }
 //        if (restoredFile.exists()) {
 //            System.out.println(restoredFile.getPath());
@@ -760,7 +760,7 @@ public class Repository {
             commitInfo = getCurrentCommit();
             HeadAndBranch.saveBranchHead(branchName);
         } catch (IOException exception) {
-            throw error("Internal error exists!");
+            throw new IllegalArgumentException(exception.getMessage());
         }
     }
 
@@ -884,7 +884,7 @@ public class Repository {
         try {
             mergeCommit(branchName);
         } catch (IOException exception) {
-            throw error("Error");
+            throw new IllegalArgumentException(exception.getMessage());
         }
 
     }
@@ -928,7 +928,7 @@ public class Repository {
             Commit currentCommit = getNewMergeCommit(commitMessage.toString(), branchName);
             saveCommit(currentCommit);
         } catch (IOException exception) {
-            throw error("Error");
+            throw new IllegalArgumentException(exception.getMessage());
         }
     }
     public static File readTemp() {

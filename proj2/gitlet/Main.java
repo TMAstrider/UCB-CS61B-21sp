@@ -87,8 +87,8 @@ public class Main {
                 }
                 default -> MyUtils.exit("No command with that name exists.");
             }
-        } catch (IOException exception) {
-            throw new RuntimeException("error");
+        } catch (IOException excp) {
+            throw new IllegalArgumentException(excp.getMessage());
         }
     }
 

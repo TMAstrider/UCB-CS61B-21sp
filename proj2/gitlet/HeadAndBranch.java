@@ -18,7 +18,7 @@ public class HeadAndBranch {
             }
             writeContents(branch, commitInfo.getId());
         } catch (IOException exception) {
-            throw error("Internal error exists! ");
+            throw new IllegalArgumentException(exception.getMessage());
         }
     }
 
@@ -45,8 +45,8 @@ public class HeadAndBranch {
                 currentBranch.createNewFile();
             }
             writeContents(currentBranch, branchName);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (IOException exception) {
+            throw new IllegalArgumentException(exception.getMessage());
         }
     }
 
