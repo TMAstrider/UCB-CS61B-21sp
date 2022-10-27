@@ -12,9 +12,7 @@ public class Main {
      *  <COMMAND> <OPERAND1> <OPERAND2> ...
      *  Usage: java gitlet.Main init
      */
-    public static void main(String[] args) throws IOException {
-        // TODO: what if args is empty?
-
+    public static void main(String[] args) {
         try {
             Repository.commandCheck(args);
             String firstArg = args[0];
