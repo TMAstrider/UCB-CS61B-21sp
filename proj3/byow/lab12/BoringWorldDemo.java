@@ -32,6 +32,12 @@ public class BoringWorldDemo {
             }
         }
 
+        for (int x = 35; x < 40; x += 1) {
+            for (int y = 10; y < 20; y += 1) {
+                world[x][y] = Tileset.AVATAR;
+            }
+        }
+
         // draws the world to the screen
         ter.renderFrame(world);
     }
